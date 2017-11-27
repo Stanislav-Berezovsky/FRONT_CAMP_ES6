@@ -1,4 +1,4 @@
-export const NEWS_SOURCES = [{
+const NEWS_SOURCES = [{
     name: 'ABC News',
     sourcesValue: 'abc-news'
 }, {
