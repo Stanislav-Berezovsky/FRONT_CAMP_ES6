@@ -1,0 +1,20 @@
+{
+  "name": "FRONT_CAMP_ES6",
+  "version": "1.0.0",
+  "description": "Steps to run app fron console:\r 1)\t2 ways:\r -git clone git@github.com:Stanislav-Berezovsky/FRONT_CAMP_ES6.git\r \tor\r -git clone https://github.com/Stanislav-Berezovsky/FRONT_CAMP_ES6.git\r 2) cd FRONT_CAMP_ES6;\r 3) http-server app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stanislav-Berezovsky/FRONT_CAMP_ES6.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stanislav-Berezovsky/FRONT_CAMP_ES6/issues"
+  },
+  "homepage": "https://github.com/Stanislav-Berezovsky/FRONT_CAMP_ES6#readme"
+}
