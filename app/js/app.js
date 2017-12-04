@@ -1,6 +1,6 @@
 // use ABC News sources for first load 
-updateNewsContent(NEWS_SOURCES[0].sourcesValue);
 buildConfigurationPanel();
+updateNewsContent(NEWS_SOURCES[0].sourcesValue);
 
 function updateNewsContent(sources) {
     const serverResponce = getNewsBySourceName(sources);
