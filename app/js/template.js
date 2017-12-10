@@ -21,7 +21,7 @@ class Template {
         </div>`;
     }
 
-    static getSelectedItem({ name, sourcesValue }) {
-        return `<option value="${sourcesValue}">${name}</option>`;
+    static getSelectedItem({ name, id }) {
+        return `<option value="${id}">${name}</option>`;
     }
 };

@@ -1,0 +1,42 @@
+#configurationPanelId {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.configurationPanelStyles{
+	height: 22px;
+}
+
+#newsContainerId{
+	width: 80%;
+	position: relative;
+	left: 10%;
+	border: 1px solid black;
+	border-bottom-style: none;
+}
+
+.newsItem {
+	width: 100%;
+    border-bottom: 1px solid black;
+}
+
+
+.newsItem .newsItemTitle{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.newsItem .newsItemTitle span{
+	margin-left: 10px;
+}
+
+.newsItem div {
+	margin: 10px;
+}
+
+.newsItemAdditional {
+	font-style: italic;
+	color: gray;
+}
