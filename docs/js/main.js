@@ -1,6 +1,5 @@
 'use strict';
 
-console.log('news application');
 getSources().then(function (responce) {
     return responce.json();
 }).then(function (data) {
@@ -12,7 +11,6 @@ getSources().then(function (responce) {
 function updateNewsContent(sources) {
     var serverResponce = getNewsBySourceName(sources);
 
-    console.log('news responce manipulation');
     return serverResponce.then(function (responce) {
         if (!responce.ok) {
             throw new Error('Responce error status: ' + responce.status);
@@ -23,7 +21,6 @@ function updateNewsContent(sources) {
         var responceStatus = _ref.status,
             articles = _ref.articles;
 
-        console.log('build html by using Template');
         var newsContainerContent = articles.reduce(function (content, article) {
             return content + ' ' + new Template(article).getArticleItem();
         }, '');
@@ -37,7 +34,6 @@ function updateNewsContent(sources) {
 function buildConfigurationPanel(sources) {
     var selectedListContent = '';
 
-    console.log('build sources list');
     sources.forEach(function (source) {
         selectedListContent += Template.getSelectedItem(source);
     });
@@ -77,7 +73,6 @@ var Template = function () {
         this.description = description;
         this.date = new Date(publishedAt);
         this.url = url;
-        console.log('constructor was created');
     }
 
     _createClass(Template, [{
