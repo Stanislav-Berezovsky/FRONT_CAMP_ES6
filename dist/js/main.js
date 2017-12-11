@@ -1,7 +1,5 @@
 'use strict';
 
-// use ABC News sources for first load 
-
 getSources().then(function (responce) {
     return responce.json();
 }).then(function (data) {
@@ -56,7 +54,7 @@ function getNewsBySourceName(source) {
 function getSources() {
     return fetch('https://newsapi.org/v2/sources?apiKey=a3f59c9918564ba283db5a9e3274f8ff');
 }
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -78,17 +76,17 @@ var Template = function () {
     }
 
     _createClass(Template, [{
-        key: "getArticleItem",
+        key: 'getArticleItem',
         value: function getArticleItem() {
-            return "<div class=\"newsItem\">\n            <div class=\"newsItemTitle\">\n                <span>" + this.title + "</span>\n            </div>\n            <div>\n                <span>" + this.description + "</span>        \n            </div>\n            <div class=\"newsItemAdditional\">\n                <span>" + this.date.toLocaleString() + "</span>\n                <span> <a href=\"" + this.url + "\">Click this link to redirect on original page</a></span>\n            </div>\n        </div>";
+            return '<div class="newsItem">\n            <div class="newsItemTitle">\n                <span>' + this.title + '</span>\n            </div>\n            <div>\n                <span>' + this.description + '</span>        \n            </div>\n            <div class="newsItemAdditional">\n                <span>' + this.date.toLocaleString() + '</span>\n                <span> <a href="' + this.url + '">Click this link to redirect on original page</a></span>\n            </div>\n        </div>';
         }
     }], [{
-        key: "getSelectedItem",
+        key: 'getSelectedItem',
         value: function getSelectedItem(_ref2) {
             var name = _ref2.name,
                 id = _ref2.id;
 
-            return "<option value=\"" + id + "\">" + name + "</option>";
+            return '<option value="' + id + '">' + name + '</option>';
         }
     }]);
 

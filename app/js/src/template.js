@@ -4,6 +4,7 @@ class Template {
         this.description = description;
         this.date = new Date(publishedAt);
         this.url = url;
+        console.log('constructor was created');
     }
 
   	getArticleItem() {

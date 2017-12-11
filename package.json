@@ -4,15 +4,15 @@
   "description": "Steps to run app fron console:\r 1)\t2 ways:\r -git clone git@github.com:Stanislav-Berezovsky/FRONT_CAMP_ES6.git\r \tor\r -git clone https://github.com/Stanislav-Berezovsky/FRONT_CAMP_ES6.git\r 2) cd FRONT_CAMP_ES6;\r 3) http-server app",
   "main": "index.js",
   "scripts": {
-    "build": "babel app/js -o  dist/js/main.js",
-    "watch": "babel app/js -o  dist/js/main.js -w"
+    "build": "babel app/js/src -o  dist/js/main.js",
+    "watch": "babel app/js/src -o  dist/js/main.js -w"
   },
   "babel": {
     "presets": [
       "es2015"
     ],
     "plugins": [
-      "syntax-dynamic-import"
+      "./app/js/plugins/my-babel-dcl.js"
     ]
   },
   "repository": {

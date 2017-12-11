@@ -1,5 +1,4 @@
-// use ABC News sources for first load 
-
+console.log('news application');
 getSources()
     .then(responce => responce.json())
     .then(data => {
@@ -14,6 +13,7 @@ getSources()
 function updateNewsContent(sources) {
     const serverResponce = getNewsBySourceName(sources);
 
+    console.log('news responce manipulation')
     return serverResponce.then(responce => {
             if (!responce.ok) {
                 throw new Error(`Responce error status: ${responce.status}`);
@@ -22,6 +22,7 @@ function updateNewsContent(sources) {
             return responce.json();
         })
         .then(({ status: responceStatus, articles }) => {
+            console.log('build html by using Template');
             const newsContainerContent = articles.reduce((content, article) => {
                 return `${content} ${(new Template(article)).getArticleItem()}`;
             }, '');
@@ -36,6 +37,7 @@ function updateNewsContent(sources) {
 function buildConfigurationPanel(sources) {
     let selectedListContent = '';
 
+    console.log('build sources list')
     sources.forEach((source) => {
         selectedListContent += Template.getSelectedItem(source);
     });
