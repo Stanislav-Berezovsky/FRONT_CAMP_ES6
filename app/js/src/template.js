@@ -1,5 +1,5 @@
-class Template {
-    constructor({ title, description, publishedAt, url }){
+export default class Template {
+    constructor({ title, description, publishedAt, url }) {
         this.title = title;
         this.description = description;
         this.date = new Date(publishedAt);
@@ -7,7 +7,7 @@ class Template {
         console.log('constructor was created');
     }
 
-  	getArticleItem() {
+    getArticleItem() {
         return `<div class="newsItem">
             <div class="newsItemTitle">
                 <span>${this.title}</span>

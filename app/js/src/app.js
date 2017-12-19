@@ -1,3 +1,5 @@
+import Template from './Template';
+ 
 console.log('news application');
 getSources()
     .then(responce => responce.json())
