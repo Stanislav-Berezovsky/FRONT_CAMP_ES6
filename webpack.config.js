@@ -9,7 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, "docs/js"),
         filename: "./main.js"
     },
-    devtool: isDevelopment ? "eval" : "source-map",
+    devtool: isDevelopment ? "inline-source-map" : "source-map",
     watch: isDevelopment,
     watchOptions: {
         ignored: /node_modules/,

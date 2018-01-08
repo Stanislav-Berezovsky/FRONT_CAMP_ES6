@@ -1,19 +1,25 @@
-import Template from './Template';
- 
+import TemplateFactory from './Template';
+import RequestService from './RequestService';
+
 console.log('news application');
-getSources()
-    .then(responce => responce.json())
-    .then(data => {
-        buildConfigurationPanel(data.sources.splice(0, 7));
-    })
-    .then(() => {
-        updateNewsContent(document.getElementById('sourcesListId').value);
-    });
+init();
 
+function init() {
+    const requestService = new RequestService();
 
+    return requestService.getSources()
+        .then(responce => responce.json())
+        .then(data => {
+            buildConfigurationPanel(data.sources.splice(0, 7));
+        })
+        .then(() => {
+            updateNewsContent(document.getElementById('sourcesListId').value);
+        });
+}
 
 function updateNewsContent(sources) {
-    const serverResponce = getNewsBySourceName(sources);
+    const requestService = new RequestService();
+    const serverResponce = requestService.getNewsBySourceName(sources);
 
     console.log('news responce manipulation')
     return serverResponce.then(responce => {
@@ -26,7 +32,7 @@ function updateNewsContent(sources) {
         .then(({ status: responceStatus, articles }) => {
             console.log('build html by using Template');
             const newsContainerContent = articles.reduce((content, article) => {
-                return `${content} ${(new Template(article)).getArticleItem()}`;
+                return `${content} ${TemplateFactory.create(article,'article').getItem()}`;
             }, '');
 
             document.getElementById('newsContainerId').innerHTML = newsContainerContent;
@@ -41,7 +47,7 @@ function buildConfigurationPanel(sources) {
 
     console.log('build sources list')
     sources.forEach((source) => {
-        selectedListContent += Template.getSelectedItem(source);
+        selectedListContent += TemplateFactory.create(source, 'source').getItem();
     });
 
     document.getElementById('sourcesListId').innerHTML = selectedListContent;
@@ -52,12 +58,4 @@ function buildConfigurationPanel(sources) {
 
             updateNewsContent(source);
         });
-}
-
-function getNewsBySourceName(source) {
-    return fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=a3f59c9918564ba283db5a9e3274f8ff`);
-}
-
-function getSources() {
-    return fetch('https://newsapi.org/v2/sources?apiKey=a3f59c9918564ba283db5a9e3274f8ff');
 }

@@ -1,4 +1,15 @@
-export default class Template {
+export default class TemplateFactory {
+    static create(options, type) {
+        const templateList = {
+            article: ArticleTemplate,
+            source: SourceTemplate
+        }
+
+        return new TemplateDecorator(new templateList[type.toLowerCase()](options));
+    }
+};
+
+class ArticleTemplate {
     constructor({ title, description, publishedAt, url }) {
         this.title = title;
         this.description = description;
@@ -7,7 +18,7 @@ export default class Template {
         console.log('constructor was created');
     }
 
-    getArticleItem() {
+    getItem() {
         return `<div class="newsItem">
             <div class="newsItemTitle">
                 <span>${this.title}</span>
@@ -21,8 +32,26 @@ export default class Template {
             </div>
         </div>`;
     }
+}
 
-    static getSelectedItem({ name, id }) {
-        return `<option value="${id}">${name}</option>`;
+class SourceTemplate {
+    constructor({id, name}) {
+        this.id = id;
+        this.name = name;
+        console.log('constructor was created');
     }
-};
+
+    getItem() {
+        return `<option value="${this.id}">${this.name}</option>`;
+    }
+}
+
+class TemplateDecorator {
+    constructor(template){
+        this.template = template;
+    }
+
+    getItem(){
+        return `<div class="decorator-style">${this.template.getItem()}</div>`;
+    }
+}
