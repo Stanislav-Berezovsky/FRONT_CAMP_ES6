@@ -9,7 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, "docs/js"),
         filename: "./main.js"
     },
-    devtool: isDevelopment ? "inline-source-map" : "source-map",
+    devtool:isDevelopment ? "inline-source-map" : "source-map",
     watch: isDevelopment,
     watchOptions: {
         ignored: /node_modules/,
@@ -20,7 +20,10 @@ module.exports = {
         loaders: [{
             test: /\.js$/,
             include: [path.resolve(__dirname, "app/js/src")],
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            options: {
+                presets: ['env']
+            }
         },{
             test: /\.less$/,
             use: [{
