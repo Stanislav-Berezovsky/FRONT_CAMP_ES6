@@ -8,6 +8,7 @@ function init() {
     const requestService = new RequestService();
 
     return requestService.getSources()
+        //.then(data => buildConfigurationPanel(data))
         .then(responce => responce.json())
         .then(data => {
             buildConfigurationPanel(data.sources.splice(0, 7));
