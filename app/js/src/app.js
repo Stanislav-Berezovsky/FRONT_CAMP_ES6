@@ -1,8 +1,14 @@
 import TemplateFactory from './Template';
 import RequestService from './RequestService';
+import SourceObserver from './SourceObserver';
 
 console.log('news application');
 init();
+
+const sourceObserver = new SourceObserver();
+sourceObserver.addSubscription({
+    update: (source) => updateNewsContent(source)
+});
 
 function init() {
     const requestService = new RequestService();
@@ -14,9 +20,9 @@ function init() {
         });
 }
 
-function updateNewsContent(sources) {
+function updateNewsContent(source) {
     const requestService = new RequestService();
-    const serverResponce = requestService.getNewsBySourceName(sources);
+    const serverResponce = requestService.getNewsBySourceName(source);
 
     console.log('news responce manipulation')
     return serverResponce.then(responce => {
@@ -51,8 +57,6 @@ function buildConfigurationPanel(sources) {
 
     document.getElementById('findNewsButtonId')
         .addEventListener('click', e => {
-            const source = document.getElementById('sourcesListId').value;
-
-            updateNewsContent(source);
+            sourceObserver.setSourceValue(document.getElementById('sourcesListId').value);
         });
 }
